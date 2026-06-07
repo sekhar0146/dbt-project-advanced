@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: fct_bikeshare_trips_merge
+    columns:
+      - name: trip_id
+        tests:
+          - unique
+          - not_null
+      - name: subscriber_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Annual', 'Single Trip', 'Explorer', 
+                       'Annual Member', 'Unknown',
+                       'U.T. Student Membership',
+                       'HT Ram Membership']
+      - name: start_time
+        tests:
+          - not_null

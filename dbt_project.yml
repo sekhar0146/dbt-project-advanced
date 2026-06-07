@@ -1,0 +1,17 @@
+name: 'dbt_advanced'
+version: '1.0.0'
+profile: 'dbt_advanced'
+
+model-paths: ["models"]
+snapshot-paths: ["snapshots"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+
+models:
+  dbt_advanced:
+    staging:
+      +materialized: table
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table
