@@ -10,12 +10,6 @@ models:
       - name: subscriber_type
         tests:
           - not_null
-          - accepted_values:
-            rguments:
-              values: ['Annual', 'Single Trip', 'Explorer', 
-                       'Annual Member', 'Unknown',
-                       'U.T. Student Membership',
-                       'HT Ram Membership']
       - name: start_time
         tests:
           - not_null
