@@ -11,7 +11,5 @@ models:
   dbt_advanced:
     staging:
       +materialized: table
-    intermediate:
-      +materialized: view
     marts:
       +materialized: table

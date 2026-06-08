@@ -11,6 +11,7 @@ models:
         tests:
           - not_null
           - accepted_values:
+            rguments:
               values: ['Annual', 'Single Trip', 'Explorer', 
                        'Annual Member', 'Unknown',
                        'U.T. Student Membership',
