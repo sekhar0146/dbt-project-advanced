@@ -26,6 +26,10 @@ unit_tests:
           - {trip_id: '1', subscriber_type: 'Annual', bike_id: '1', bike_type: 'classic', start_time: '2026-01-01', start_station_id: 1, start_station_name: 'A', end_station_id: 2, end_station_name: 'B', duration_minutes: -5}
           - {trip_id: '2', subscriber_type: 'Single', bike_id: '2', bike_type: 'classic', start_time: '2026-01-01', start_station_id: 1, start_station_name: 'A', end_station_id: 2, end_station_name: 'B', duration_minutes: null}
           - {trip_id: '3', subscriber_type: 'Annual', bike_id: '3', bike_type: 'classic', start_time: '2026-01-01', start_station_id: 1, start_station_name: 'A', end_station_id: 2, end_station_name: 'B', duration_minutes: 30}
+      - input: ref('bike_type_lookup')
+        rows:
+          - {bike_type: 'classic', bike_type_description: 'Traditional pedal bike', is_electric: false}
+          - {bike_type: 'electric', bike_type_description: 'Electric assisted bike', is_electric: true}
       - input: this
         rows:
           - {trip_id: '99', subscriber_type: 'Annual', bike_id: '9', bike_type: 'classic', start_time: '2026-01-01', start_station_id: 1, start_station_name: 'A', end_station_id: 2, end_station_name: 'B', duration_minutes: 20}
