@@ -1,0 +1,4 @@
+bike_type,bike_type_description,is_electric
+classic,Traditional pedal bike,false
+electric,Electric assisted bike,true
+smart,Smart connected bike,false

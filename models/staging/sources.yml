@@ -6,3 +6,8 @@ sources:
     schema: austin_bikeshare
     tables:
       - name: bikeshare_trips
+        config:
+          loaded_at_field: start_time
+          freshness:
+            warn_after: {count: 1, period: day}
+            error_after: {count: 9999, period: day}

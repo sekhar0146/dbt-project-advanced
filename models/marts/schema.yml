@@ -13,3 +13,24 @@ models:
       - name: start_time
         tests:
           - not_null
+
+unit_tests:
+  - name: test_clean_duration_macro
+    model: fct_bikeshare_trips_merge
+    overrides:
+      macros:
+        is_incremental: true
+    given:
+      - input: ref('stg_bikeshare_trips')
+        rows:
+          - {trip_id: '1', subscriber_type: 'Annual', bike_id: '1', bike_type: 'classic', start_time: '2026-01-01', start_station_id: 1, start_station_name: 'A', end_station_id: 2, end_station_name: 'B', duration_minutes: -5}
+          - {trip_id: '2', subscriber_type: 'Single', bike_id: '2', bike_type: 'classic', start_time: '2026-01-01', start_station_id: 1, start_station_name: 'A', end_station_id: 2, end_station_name: 'B', duration_minutes: null}
+          - {trip_id: '3', subscriber_type: 'Annual', bike_id: '3', bike_type: 'classic', start_time: '2026-01-01', start_station_id: 1, start_station_name: 'A', end_station_id: 2, end_station_name: 'B', duration_minutes: 30}
+      - input: this
+        rows:
+          - {trip_id: '99', subscriber_type: 'Annual', bike_id: '9', bike_type: 'classic', start_time: '2026-01-01', start_station_id: 1, start_station_name: 'A', end_station_id: 2, end_station_name: 'B', duration_minutes: 20}
+    expect:
+      rows:
+        - {trip_id: '1', duration_minutes: 0}
+        - {trip_id: '2', duration_minutes: 0}
+        - {trip_id: '3', duration_minutes: 30}
