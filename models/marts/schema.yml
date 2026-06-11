@@ -2,17 +2,41 @@ version: 2
 
 models:
   - name: fct_bikeshare_trips_merge
+    config:
+      contract:
+        enforced: true
     columns:
       - name: trip_id
+        data_type: string
         tests:
           - unique
           - not_null
       - name: subscriber_type
+        data_type: string
         tests:
           - not_null
+      - name: bike_id
+        data_type: string
+      - name: bike_type
+        data_type: string
+      - name: bike_type_description
+        data_type: string
+      - name: is_electric
+        data_type: bool
       - name: start_time
+        data_type: timestamp
         tests:
           - not_null
+      - name: start_station_id
+        data_type: int64
+      - name: start_station_name
+        data_type: string
+      - name: end_station_id
+        data_type: string
+      - name: end_station_name
+        data_type: string
+      - name: duration_minutes
+        data_type: int64
 
 unit_tests:
   - name: test_clean_duration_macro
